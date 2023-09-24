@@ -8,7 +8,9 @@ metadata = MetaData(naming_convention={
 
 db = SQLAlchemy(metadata=metadata)
 
-class Message(db.Model, SerializerMixin):
-    __tablename__ = 'messages'
-
+class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(255), nullable=False)
+    username = db.Column(db.String(50), nullable=False)
+    created_at = db.Column(db.String(50), nullable=False, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
